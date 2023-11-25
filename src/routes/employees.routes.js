@@ -11,10 +11,14 @@ import {
   getIncomes,
   getCategory,
   getCategorys,
+  login  
 } from "../controllers/employees.controller.js";
 
 const router = Router();
+//Post logn¿in
+router.post("/login", login);
 
+//########
 // GET all Account
 router.get("/account", getAccounts);
 
