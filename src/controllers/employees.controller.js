@@ -5,14 +5,14 @@ export const getEmployees = async (req, res) => {
     const [rows] = await pool.query("SELECT * FROM employee");
     res.json(rows);
   } catch (error) {
-    return res.status(500).json({ message: "Something goes wrong" });
+    return res.status(500).json({ message: "Somfile:///C:/Users/Usuario/Downloads/employees.controller.jsething goes wrong" });
   }
 };
 
 export const getEmployee = async (req, res) => {
   try {
     const { id } = req.params;
-    const [rows] = await pool.query("SELECT * FROM employee WHERE id = ?", [
+    const [rows] = awaitfile:///C:/Users/Usuario/Downloads/employees.controller.js pool.query("SELECT * FROM employee WHERE id = ?", [
       id,
     ]);
 
