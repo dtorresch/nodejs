@@ -2,7 +2,7 @@
 const http = require('http');
 const PORT = 3000;
 
-//const app = expres()
+//const app = express()
 //app.get('/usuarios',(re,res) => res.send('obteniendo usuarios'))
 //app.post('/usuarios',(re,res) => res.send('creando usuarios'))
 //app.put('/usuarios',(re,res) => res.send('actualizando usuarios'))
