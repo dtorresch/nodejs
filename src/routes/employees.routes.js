@@ -5,6 +5,7 @@ import {
   getEmployee,
   getEmployees,
   updateEmployee,
+  login,
 } from "../controllers/employees.controller.js";
 
 const router = Router();
@@ -22,5 +23,7 @@ router.delete("/usuarios/:id_usu", deleteEmployee);
 router.post("/usuarios", createEmployee);
 
 router.patch("/usuarios/:id_usu", updateEmployee);
+
+router.post("/login", login);
 
 export default router;
