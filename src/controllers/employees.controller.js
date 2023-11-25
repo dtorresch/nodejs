@@ -29,18 +29,15 @@ export const login = async (req, res) => {
 };
 //end login
 //
-export const authenticateToken = (req, res, next) => {
-  const token = req.header("Authorization");
-
-  if (!token) return res.status(401).json({ message: "Acceso no autorizado" });
-
-  jwt.verify(token, "tu_secreto_secreto", (err, user) => {
-    if (err) return res.status(403).json({ message: "Token inválido" });
-
-    req.user = user;
-    next();
-  });
-};
+//export const authenticateToken = (req, res, next) => {
+  //const token = req.header("Authorization");
+  //if (!token) return res.status(401).json({ message: "Acceso no autorizado" });
+  //jwt.verify(token, "tu_secreto_secreto", (err, user) => {
+    //if (err) return res.status(403).json({ message: "Token inválido" });
+    //req.user = user;
+    //next();
+  //});
+//};
 //end
 //###################################3
 //getAccounts
