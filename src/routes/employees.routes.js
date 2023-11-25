@@ -9,6 +9,8 @@ import {
   getAccounts,
   getIncome,
   getIncomes,
+  getCategory;
+  getCategorys,
 } from "../controllers/employees.controller.js";
 
 const router = Router();
@@ -18,6 +20,12 @@ router.get("/account", getAccounts);
 
 // GET An Account
 router.get("/account/:id", getAccount);
+
+// GET all Category
+router.get("/expense/all", getCategorys);
+
+// GET An Category
+router.get("/expense/all/:id", getCategory);
 
 // GET all Income
 router.get("/income", getIncomes);
