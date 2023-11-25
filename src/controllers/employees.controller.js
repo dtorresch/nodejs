@@ -78,9 +78,10 @@ export const updateEmployee = async (req, res) => {
 };
 
 export const login = async (req, res) => {
- 
+ const { dni } = req.body;
+  
   try {
-    const { dni } = req.body;
+    
     const user = await pool.query(
       "SELECT * FROM usuario WHERE dni = $1",
       [dni]
