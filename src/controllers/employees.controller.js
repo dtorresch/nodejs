@@ -1,4 +1,34 @@
 import { pool } from "../db.js";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken"
+
+//Post login
+export const login = async (req, res) => {
+  try {
+    const { dni, contraseña } = req.body;
+    // Buscar usuario por DNI
+    const [userRows] = await pool.query("SELECT * FROM usuario WHERE dni = ?", [dni]);
+    if (userRows.length === 0) {
+      return res.status(401).json({ message: "Credenciales inválidas" });
+    }
+    const user = userRows[0];
+    // Verificar la contraseña
+    const passwordMatch = await bcrypt.compare(contraseña, user.contraseña);
+    if (!passwordMatch) {
+      return res.status(401).json({ message: "Credenciales inválidas" });
+    }
+    // Generar token JWT
+    const token = jwt.sign({ userId: user.id, username: user.nombre }, "tu_secreto_secreto", {
+      expiresIn: "1h", // Puedes ajustar el tiempo de expiración
+    });
+    res.json({ token, userId: user.id, username: user.nombre });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error en el servidor" });
+  }
+};
+//end login
+//###################################3
 //getAccounts
 export const getAccounts = async (req, res) => {
   try {
