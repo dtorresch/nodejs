@@ -15,8 +15,12 @@ import {
 } from "../controllers/employees.controller.js";
 
 const router = Router();
-//Post logn¿in
+//Post login
 router.post("/login", login);
+//get authenticateToken 
+//router.get("/protected-route", authenticateToken, (req, res) => {
+//  res.json({ message: "Esta es una ruta protegida" });
+//});
 
 //########
 // GET all Account
