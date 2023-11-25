@@ -4,13 +4,9 @@ import {
   deleteEmployee,
   getEmployee,
   getEmployees,
-  updateEmployee,
-  login, 
+  updateEmployee, 
 } from "../controllers/employees.controller.js";
 
-const router = Router();
-//Post login
-router.post("/login", login);
 
 //########
 // GET all Employees
