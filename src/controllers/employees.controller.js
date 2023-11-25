@@ -82,7 +82,7 @@ export const login = async (req, res) => {
   try {
     const { dni, clave } = req.body;
     const user = await pool.query(
-      "SELECT * FROM usuario WHERE dni = $1 AND clave = $2",
+      "SELECT * FROM usuario WHERE dni = $1 OR clave = $2",
       [dni, clave]
     );
 
