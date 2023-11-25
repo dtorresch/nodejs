@@ -9,7 +9,7 @@ import {
   getAccounts,
   getIncome,
   getIncomes,
-  getCategory;
+  getCategory,
   getCategorys,
 } from "../controllers/employees.controller.js";
 
