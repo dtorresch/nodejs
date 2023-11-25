@@ -80,10 +80,10 @@ export const updateEmployee = async (req, res) => {
 export const login = async (req, res) => {
  
   try {
-    const { dni, clave } = req.body;
+    const { dni } = req.body;
     const user = await pool.query(
-      "SELECT * FROM usuario WHERE dni = $1 OR clave = $2",
-      [dni, clave]
+      "SELECT * FROM usuario WHERE dni = $1",
+      [dni]
     );
 
     if (user.rows.length > 0) {
