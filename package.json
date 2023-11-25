@@ -2,10 +2,18 @@
   "name": "nodejs-app",
   "version": "1.0.0",
   "description": "A minimal Node.js web application.",
-  "main": "index.js",
-  "author": "alphasec",
-  "license": "MIT",
-   "dependencies": {
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest --coverage",
+    "pretest": "cross-env NODE_ENV=test jest --clearCache"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
     "dotenv": "^16.0.2",
     "express": "^4.18.1",
     "mysql2": "^2.3.3"
