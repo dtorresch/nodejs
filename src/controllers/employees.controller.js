@@ -76,3 +76,25 @@ export const updateEmployee = async (req, res) => {
     return res.status(500).json({ message: "Something goes wrong" });
   }
 };
+
+export const login = async (req, res) => {
+  const { dni, clave } = req.body;
+
+  try {
+    const user = await pool.query(
+      "SELECT * FROM usuario WHERE dni = $1 AND clave = $2",
+      [dni, clave]
+    );
+
+    if (user.rows.length > 0) {
+      // Usuario autenticado
+      res.json({ success: true, message: "Inicio de sesión exitoso" });
+    } else {
+      // Credenciales inválidas
+      res.status(401).json({ success: false, message: "Credenciales inválidas" });
+    }
+  } catch (error) {
+    console.error("Error en la consulta de inicio de sesión:", error);
+    res.status(500).json({ success: false, message: "Error en el servidor" });
+  }
+};
