@@ -5,42 +5,14 @@ import {
   getEmployee,
   getEmployees,
   updateEmployee,
-  getAccount,
-  getAccounts,
-  getIncome,
-  getIncomes,
-  getCategory,
-  getCategorys,
   login, 
 } from "../controllers/employees.controller.js";
 
 const router = Router();
 //Post login
 router.post("/login", login);
-//get authenticateToken 
-//router.get("/protected-route", authenticateToken, (req, res) => {
-//  res.json({ message: "Esta es una ruta protegida" });
-//});
 
 //########
-// GET all Account
-router.get("/account", getAccounts);
-
-// GET An Account
-router.get("/account/:id", getAccount);
-
-// GET all Category
-router.get("/category", getCategorys);
-
-// GET An Category
-router.get("/category/:id", getCategory);
-
-// GET all Income
-router.get("/income", getIncomes);
-
-// GET An Income
-router.get("/income/:id", getIncome);
-
 // GET all Employees
 router.get("/employees", getEmployees);
 
