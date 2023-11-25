@@ -13,14 +13,14 @@ const router = Router();
 router.get("/usuarios", getEmployees);
 
 // GET An Employee
-router.get("/usuarios/:id", getEmployee);
+router.get("/usuarios/:id_usu", getEmployee);
 
 // DELETE An Employee
-router.delete("/usuarios/:id", deleteEmployee);
+router.delete("/usuarios/:id_usu", deleteEmployee);
 
 // INSERT An Employee
 router.post("/usuarios", createEmployee);
 
-router.patch("/usuarios/:id", updateEmployee);
+router.patch("/usuarios/:id_usu", updateEmployee);
 
 export default router;
