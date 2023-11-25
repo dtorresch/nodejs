@@ -7,8 +7,8 @@ import {
   updateEmployee,
   getAccount,
   getAccounts,
-  getincome,
-  getincomes,
+  getIncome,
+  getIncomes,
 } from "../controllers/employees.controller.js";
 
 const router = Router();
