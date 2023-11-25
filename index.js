@@ -2,8 +2,8 @@ import espress from 'express'
 const http = require('http');
 const PORT = 3000;
 
-const app = expres()
-app.get('/usuarios',(re,res) => res.send('obteniendo usuarios'))
+//const app = expres()
+//app.get('/usuarios',(re,res) => res.send('obteniendo usuarios'))
 
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
