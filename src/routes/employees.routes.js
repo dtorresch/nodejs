@@ -20,10 +20,10 @@ router.get("/account", getAccounts);
 router.get("/account/:id", getAccount);
 
 // GET all Income
-router.get("/account", getIncomes);
+router.get("/income", getIncomes);
 
 // GET An Income
-router.get("/account/:id", getIncome);
+router.get("/income/:id", getIncome);
 
 // GET all Employees
 router.get("/employees", getEmployees);
