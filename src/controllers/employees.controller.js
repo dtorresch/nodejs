@@ -26,6 +26,33 @@ export const getAccount = async (req, res) => {
   }
 };
 //end
+//getCategorys
+export const getCategorys = async (req, res) => {
+  try {
+    const [rows] = await pool.query("SELECT * FROM categoria");
+    res.json(rows);
+  } catch (error) {
+    return res.status(500).json({ message: "Something goes wrong" });
+  }
+};
+//getCategory
+export const getCategory = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const [rows] = await pool.query("SELECT * FROM categoria WHERE id = ?", [
+      id,
+    ]);
+
+    if (rows.length <= 0) {
+      return res.status(404).json({ message: "categoria not found" });
+    }
+
+    res.json(rows[0]);
+  } catch (error) {
+    return res.status(500).json({ message: "Something goes wrong" });
+  }
+};
+//end
 //getIncomes
 export const getIncomes = async (req, res) => {
   try {
