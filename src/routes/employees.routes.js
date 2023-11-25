@@ -22,10 +22,10 @@ router.get("/account", getAccounts);
 router.get("/account/:id", getAccount);
 
 // GET all Category
-router.get("/expense/all", getCategorys);
+router.get("/category", getCategorys);
 
 // GET An Category
-router.get("/expense/all/:id", getCategory);
+router.get("/category/:id", getCategory);
 
 // GET all Income
 router.get("/income", getIncomes);
