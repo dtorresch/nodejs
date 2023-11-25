@@ -1,44 +1,27 @@
 import { pool } from "../db.js";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken"
 
 //Post login
 export const login = async (req, res) => {
   try {
-    const { dni, contraseña } = req.body;
-    // Buscar usuario por DNI
-    const [userRows] = await pool.query("SELECT * FROM usuario WHERE dni = ?", [dni]);
-    if (userRows.length === 0) {
-      return res.status(401).json({ message: "Credenciales inválidas" });
+    const { dni, clave } = req.body;
+    const [rows] = await pool.query("SELECT * FROM usuario WHERE dni = ?", [dni]);
+    if (rows.length <= 0) {
+      return res.status(404).json({ message: "Usuario not found" });
     }
-    const user = userRows[0];
-    // Verificar la contraseña
-    const passwordMatch = await bcrypt.compare(contraseña, user.contraseña);
-    if (!passwordMatch) {
-      return res.status(401).json({ message: "Credenciales inválidas" });
+    const user = rows[0];
+    // Comparar la contraseña ingresada con la almacenada en la base de datos
+    const isPasswordValid = await bcrypt.compare(clave, user.clave);
+    if (!isPasswordValid) {
+      return res.status(401).json({ message: "Invalid credentials" });
     }
-    // Generar token JWT
-    const token = jwt.sign({ userId: user.id, username: user.nombre }, "tu_secreto_secreto", {
-      expiresIn: "1h", // Puedes ajustar el tiempo de expiración
-    });
-    res.json({ token, userId: user.id, username: user.nombre });
+    res.json({ message: "Login successful" });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Error en el servidor" });
+    return res.status(500).json({ message: "Something goes wrong" });
   }
 };
 //end login
-//
-//export const authenticateToken = (req, res, next) => {
-  //const token = req.header("Authorization");
-  //if (!token) return res.status(401).json({ message: "Acceso no autorizado" });
-  //jwt.verify(token, "tu_secreto_secreto", (err, user) => {
-    //if (err) return res.status(403).json({ message: "Token inválido" });
-    //req.user = user;
-    //next();
-  //});
-//};
-//end
+
 //###################################3
 //getAccounts
 export const getAccounts = async (req, res) => {
