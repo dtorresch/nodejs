@@ -1,9 +1,12 @@
-import express from 'express'
+//import express from 'express'
 const http = require('http');
 const PORT = 3000;
 
 //const app = expres()
 //app.get('/usuarios',(re,res) => res.send('obteniendo usuarios'))
+//app.post('/usuarios',(re,res) => res.send('creando usuarios'))
+//app.put('/usuarios',(re,res) => res.send('actualizando usuarios'))
+//app.delete('/usuarios',(re,res) => res.send('eliminando usuarios'))
 
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
